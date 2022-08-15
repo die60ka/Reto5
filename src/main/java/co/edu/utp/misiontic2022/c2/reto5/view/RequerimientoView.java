@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import co.edu.utp.misiontic2022.c2.reto5.controller.RequerimientoController;
+import co.edu.utp.misiontic2022.c2.reto5.model.vo.CasaCampestreVo;
 import co.edu.utp.misiontic2022.c2.reto5.model.vo.LiderPorCiudadVo;
 
 public class RequerimientoView extends JFrame {
@@ -54,6 +55,19 @@ public class RequerimientoView extends JFrame {
 
         btnConsulta1.setBounds(28, 537, 133, 29);
         contJPanel.add(btnConsulta1);
+
+        JButton btnConsulta2 = new JButton("Informe 2");
+        btnConsulta2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                // TODO Auto-generated method stub
+                informe2();
+            }
+            
+        });
+
+        btnConsulta2.setBounds(180, 537, 133, 29);
+        contJPanel.add(btnConsulta2);
     }
 
     public void informe1() {
@@ -68,6 +82,30 @@ public class RequerimientoView extends JFrame {
                 salida += lider.getCiudad() + " \n";
             }
             textArea.setText(salida);
+        } catch (SQLException e) {
+            System.err.println("Error " + e.getMessage());
+        }
+    }
+
+    public void informe2() {
+        try {
+            ArrayList<CasaCampestreVo> casas = controller.consultarCasaCampestre();
+            String salida = "**** Proyecto Casa Campestre **** \n\nId Proyecto \t Constructora \t Habitaciones \t Ciudad\n\n";
+
+            for (CasaCampestreVo casa : casas) {
+                salida += casa.getIdProyecto() + " \t ";
+                salida += casa.getConstructora();
+                if (casa.getConstructora().length() <= 11) {
+                    salida += "\t\t";
+                } else {
+                    salida += "\t";
+                }
+                salida += casa.getNumeroHabitaciones() + "\t\t";
+                salida += casa.getCiudad() + "\n";
+            }
+
+            textArea.setText(salida);
+
         } catch (SQLException e) {
             System.err.println("Error " + e.getMessage());
         }

@@ -39,10 +39,10 @@ public class LiderPorCiudadDao {
             stmt.close();
             rset.close();
 
-        } finally {
-            if (conn != null) {
-                conn.close();
-            }
+            } finally {
+                if (conn != null) {
+                    conn.close();
+                }
                 
             }
 
