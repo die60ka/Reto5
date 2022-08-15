@@ -17,8 +17,8 @@ public class LiderPorCiudadDao {
         Connection conn = JDBCUtilities.gConnection();
 
         try {
-            String sql =    "SELECT l.ID.Lider, l.Nombre , l.Primer_Apellido , l.Ciudad_Residencia " +
-                            "FROM Lider l" +
+            String sql =    "SELECT l.ID_Lider, l.Nombre , l.Primer_Apellido , l.Ciudad_Residencia " +
+                            "FROM Lider l " +
                             "ORDER BY l.Ciudad_Residencia; ";
 
             Statement stmt = conn.createStatement();

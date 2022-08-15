@@ -1,13 +1,16 @@
 package co.edu.utp.misiontic2022.c2.reto5;
 
+import co.edu.utp.misiontic2022.c2.reto5.view.RequerimientoView;
+
 /**
- * Hello world!
+ * RETO 5
  *
  */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        RequerimientoView view = new RequerimientoView();
+        view.setVisible(true);
     }
 }
