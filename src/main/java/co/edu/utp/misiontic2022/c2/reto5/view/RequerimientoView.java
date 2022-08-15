@@ -128,13 +128,13 @@ public class RequerimientoView extends JFrame {
     public void informe3() {
         try {
             ArrayList<ComprasProyectoVo> compras = controller.consultarComprasProyecto();
-            String salida = "**** Compras Por Proyecto ****\n\nId Compra \t Constructora \t Banco vinculado\n\n";
+            String salida = "**** Compras Por Proyecto ****\n\nId Compra \tConstructora  \tBanco vinculado\n\n";
 
             for (ComprasProyectoVo compra : compras) {
-                salida += compra.getIdcompra() + " \t ";
+                salida += compra.getIdcompra() + "\t";
                 salida += compra.getConstructora();
-                if (compra.getConstructora().length() <= 8) {
-                    salida +=  " \t\t ";
+                if (compra.getConstructora().length() <= 9) {
+                    salida +=  "\t\t";
                 } else {
                     salida += "\t";
                 }
