@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import co.edu.utp.misiontic2022.c2.reto5.controller.RequerimientoController;
 import co.edu.utp.misiontic2022.c2.reto5.model.vo.CasaCampestreVo;
+import co.edu.utp.misiontic2022.c2.reto5.model.vo.ComprasProyectoVo;
 import co.edu.utp.misiontic2022.c2.reto5.model.vo.LiderPorCiudadVo;
 
 public class RequerimientoView extends JFrame {
@@ -68,6 +69,19 @@ public class RequerimientoView extends JFrame {
 
         btnConsulta2.setBounds(180, 537, 133, 29);
         contJPanel.add(btnConsulta2);
+
+        JButton btnConsulta3 = new JButton("Informe 3");
+        btnConsulta3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                informe3();
+            }
+
+        });
+
+        btnConsulta3.setBounds(330, 537, 133, 29);
+        contJPanel.add(btnConsulta3);
     }
 
     public void informe1() {
@@ -102,6 +116,29 @@ public class RequerimientoView extends JFrame {
                 }
                 salida += casa.getNumeroHabitaciones() + "\t\t";
                 salida += casa.getCiudad() + "\n";
+            }
+
+            textArea.setText(salida);
+
+        } catch (SQLException e) {
+            System.err.println("Error " + e.getMessage());
+        }
+    }
+
+    public void informe3() {
+        try {
+            ArrayList<ComprasProyectoVo> compras = controller.consultarComprasProyecto();
+            String salida = "**** Compras Por Proyecto ****\n\nId Compra \t Constructora \t Banco vinculado\n\n";
+
+            for (ComprasProyectoVo compra : compras) {
+                salida += compra.getIdcompra() + " \t ";
+                salida += compra.getConstructora();
+                if (compra.getConstructora().length() <= 8) {
+                    salida +=  " \t\t ";
+                } else {
+                    salida += "\t";
+                }
+                salida += compra.getBanco() + "\n";
             }
 
             textArea.setText(salida);
